@@ -22,13 +22,11 @@ public class DisplayTradeOptions {
 //						 System.out.println("Enter the rate:"); 
 //						  float rate=scanner.nextFloat();
 //						 book.setRate(rate);
-						  
 						book.bookTrade(list_data);
 						break;
 					case 2:
 						PrintTrade print = new PrintTrade();
-						print.printData(list_data);
-
+						print.printTradeData(list_data);
 						break;
 					case 3:
 						System.out.println("Do you really want to exit (y/n)");
@@ -38,8 +36,10 @@ public class DisplayTradeOptions {
 							exit = true;
 							break;
 						}
+						else if (exit_choice.equals("N") || exit_choice.equals("NO"))
+							break;
+						else
 						System.out.println("Invalid Option try again..");
-
 						break;
 					default:
 						System.out.println("Invalid choice...");

@@ -35,9 +35,7 @@ public class BookTrade {
 		this.customerName = scanner.nextLine().trim();
 		System.out.println("Enter Currency Pair");
 		this.currencyPair = CurrencyPairChecker().trim();
-		System.out.println("Enter amount to transfer");
-		this.amount = scanner.nextDouble();
-		amount = amount * rate;
+		this.amount= amountCalculator(amount,rate);
 		displayAmount = PrintTrade.displayAmount(amount);
 		System.out.println("Do you want to get Rate(y/n)");
 		this.printRate = scanner.next().trim().toLowerCase();
@@ -52,20 +50,33 @@ public class BookTrade {
 		bookOrCancelTrade(data);
 
 	}
+	private Double amountCalculator(Double amount,float rate) {
+		System.out.println("Enter amount to transfer");
+		  amount = scanner.nextDouble();
+		if(amount<=0)
+		{
+			System.out.println("Enter amount above 0");
+			return amountCalculator(this.amount,this.rate);
+		}
+		amount = amount * this.rate;
+		return amount;
+		
+	}
 
 	private String CurrencyPairChecker() {
 		this.currencyPair = scanner.nextLine().trim().toUpperCase();
 		if (currencyPair.equals("USDINR")) {
 			return currencyPair;
 		}
-		System.out.println("Only USRINR is accepted Try Again..");
+		System.out.println("Only USDINR is accepted Try Again..");
 		return CurrencyPairChecker();
 
 	}
 
 	private void bookOrCancelTrade(ArrayList<TradingData> data) {
 		String choice;
-		System.out.println("Enter Book to Book this Trade\n" + "Enter Cancel to cancel this Trade\n");
+		System.out.println("Enter Book to Book this Trade\n" + "Enter Cancel to cancel this Trade");
+		System.out.println("**********************************************");
 		choice = scanner.next().trim().toLowerCase();
 
 		switch (choice) {
