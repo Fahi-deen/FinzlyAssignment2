@@ -96,7 +96,7 @@ public class BookTrade {
 			case "book":
 				data.add(trade);
 				System.out.println("Trade for USDINR has been booked with rate " + rate + ", The amount of Rs "
-						+ displayAmount + " will  be transferred in 2 working days to " + customerName);
+						+ displayAmount + " will  be transferred in 2 working days to " + customerName+"..");
 				break;
 			case "cancel":
 				tradeno--;
