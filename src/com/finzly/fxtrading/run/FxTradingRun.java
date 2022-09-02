@@ -10,9 +10,8 @@ public class FxTradingRun {
 	public static ArrayList<TradingData> list_data = new ArrayList<>();
 
 	public static void main(String[] args) {
-       DisplayTradeOptions trade=new DisplayTradeOptions();
-       trade.showTadingOperations(list_data);
+		DisplayTradeOptions trade = new DisplayTradeOptions();
+		trade.showTadingOperations(list_data);
 	}
 
-	
 }

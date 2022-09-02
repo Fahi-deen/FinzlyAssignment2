@@ -35,11 +35,10 @@ public class DisplayTradeOptions {
 							System.out.println("Bye - have a good day");
 							exit = true;
 							break;
-						}
-						else if (exit_choice.equals("N") || exit_choice.equals("NO"))
+						} else if (exit_choice.equals("N") || exit_choice.equals("NO"))
 							break;
 						else
-						System.out.println("Invalid Option try again..");
+							System.out.println("Invalid Option try again..");
 						break;
 					default:
 						System.out.println("Invalid choice...");

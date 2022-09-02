@@ -35,11 +35,12 @@ public class BookTrade {
 		this.customerName = scanner.nextLine().trim();
 		System.out.println("Enter Currency Pair");
 		this.currencyPair = CurrencyPairChecker().trim();
-		this.amount= amountCalculator(amount,rate);
+		this.amount = amountCalculator(amount, rate);
 		displayAmount = PrintTrade.displayAmount(amount);
-		System.out.println("Do you want to get Rate(y/n)");
-		this.printRate = scanner.next().trim().toLowerCase();
-		if (printRate.equals("y"))
+		printRate = displayPrintRate();
+		;
+
+		if (printRate.equals("y") || printRate.equals("yes"))
 			getRateValue();
 		trade.setTradeNo(tradeno);
 		trade.setCustomerName(customerName);
@@ -50,17 +51,29 @@ public class BookTrade {
 		bookOrCancelTrade(data);
 
 	}
-	private Double amountCalculator(Double amount,float rate) {
+
+	private Double amountCalculator(Double amount, float rate) {
 		System.out.println("Enter amount to transfer");
-		  amount = scanner.nextDouble();
-		if(amount<=0)
-		{
+		amount = scanner.nextDouble();
+		if (amount <= 0) {
 			System.out.println("Enter amount above 0");
-			return amountCalculator(this.amount,this.rate);
+			return amountCalculator(this.amount, this.rate);
 		}
 		amount = amount * this.rate;
 		return amount;
-		
+
+	}
+
+	private String displayPrintRate() {
+		System.out.println("Do you want to get Rate(y/n)");
+		this.printRate = scanner.next().trim().toLowerCase();
+		if (printRate.equals("y"))
+			return printRate;
+		else if (printRate.equals("n"))
+			return printRate;
+		System.out.println("Invalid choice\nEnter only y to print rate or n to not print the rate");
+		return displayPrintRate();
+
 	}
 
 	private String CurrencyPairChecker() {
@@ -82,7 +95,7 @@ public class BookTrade {
 		switch (choice) {
 			case "book":
 				data.add(trade);
-				System.out.println("Trade for USDINR has been booked with rate" + rate + ", The amount of Rs "
+				System.out.println("Trade for USDINR has been booked with rate " + rate + ", The amount of Rs "
 						+ displayAmount + " will  be transferred in 2 working days to " + customerName);
 				break;
 			case "cancel":
